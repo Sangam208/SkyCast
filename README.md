@@ -1,6 +1,9 @@
 # 🌤️ SkyCast
 
-A Flutter project built to practice and understand the BLoC Pattern by displaying real-time weather data.
+<i>A Flutter project built to practice and understand the BLoC Pattern by displaying real-time weather data.</i>
+
+<img width="345" height="396" alt="image" src="https://github.com/user-attachments/assets/784feefd-8b97-4bc2-89e8-9ae832a2fede" />
+
 
 ## 📌 Overview
 
