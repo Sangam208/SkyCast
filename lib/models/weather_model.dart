@@ -56,11 +56,14 @@ class WeatherModel {
         .toList();
 
     return WeatherModel(
-      currentTemp: currentWeatherData['main']['temp'] as double,
+      currentTemp: (currentWeatherData['main']['temp'] as num).toDouble(),
       currentSky: currentWeatherData['weather'][0]['main'] as String,
-      currentPressure: currentWeatherData['main']['pressure'] as double,
-      currentWindSpeed: currentWeatherData['wind']['speed'] as double,
-      currentHumidity: currentWeatherData['main']['humidity'] as double,
+      currentPressure: (currentWeatherData['main']['pressure'] as num)
+          .toDouble(),
+      currentWindSpeed: (currentWeatherData['wind']['speed'] as num).toDouble(),
+      currentHumidity: (currentWeatherData['main']['humidity'] as num)
+          .toDouble(),
+
       hourlyforecastItem: hourlyData,
     );
   }

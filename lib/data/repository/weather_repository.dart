@@ -6,14 +6,10 @@ import 'package:weather_app/models/weather_model.dart';
 
 class WeatherRepository {
   final WeatherDataProvider weatherDataProvider;
-  WeatherRepository(
-    this.weatherDataProvider,
-  );
+  WeatherRepository(this.weatherDataProvider);
 
-  Future<WeatherModel> getCurrentWeather() async {
+  Future<WeatherModel> getCurrentWeather(String cityName) async {
     try {
-      String cityName = 'New Delhi';
-
       final weatherData = await weatherDataProvider.getCurrentWeather(cityName);
 
       final data = jsonDecode(weatherData);

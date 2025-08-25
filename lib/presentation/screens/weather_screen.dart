@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/presentation/widgets/additional_info_item.dart';
+import 'package:weather_app/presentation/widgets/city_dropdown.dart';
 import 'package:weather_app/presentation/widgets/hourly_forecast_item.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<WeatherBloc>().add(WeatherFetched());
+    context.read<WeatherBloc>().add(WeatherFetched(city: 'London'));
   }
 
   @override
@@ -27,15 +28,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Weather App',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          'S K Y  C A S T',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => context.read<WeatherBloc>().add(WeatherFetched()),
+            onPressed: () {
+              final state = context.read<WeatherBloc>().state;
+              if (state is WeatherSuccess) {
+                context.read<WeatherBloc>().add(
+                  WeatherFetched(city: state.city),
+                );
+              }
+            },
             icon: const Icon(Icons.refresh),
           ),
         ],
@@ -47,9 +53,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           }
 
           if (state is! WeatherSuccess) {
-            return const Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
+            return const Center(child: CircularProgressIndicator.adaptive());
           }
 
           final data = state.weatherModel;
@@ -67,6 +71,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    CityDropdown(),
+                    const SizedBox(height: 10),
                     // main card
                     SizedBox(
                       width: double.infinity,
@@ -78,10 +84,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                              sigmaX: 10,
-                              sigmaY: 10,
-                            ),
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Center(
@@ -105,9 +108,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     const SizedBox(height: 16),
                                     Text(
                                       currentSky,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                      ),
+                                      style: const TextStyle(fontSize: 20),
                                     ),
                                   ],
                                 ),

@@ -33,7 +33,7 @@ class HourlyForecastModel {
   factory HourlyForecastModel.fromMap(Map<String, dynamic> map) {
     return HourlyForecastModel(
       hourlySky: map['weather'][0]['main'] as String,
-      hourlyTemp: map['main']['temp'] as double,
+      hourlyTemp: (map['main']['temp'] as num).toDouble(),
       time: map['dt_txt'] as String,
     );
   }
