@@ -1,16 +1,20 @@
-# weather_app
+# 🌤️ SkyCast
 
-A new Flutter project.
+A Flutter project built to practice and understand the BLoC Pattern by displaying real-time weather data.
 
-## Getting Started
+## 📌 Overview
 
-This project is a starting point for a Flutter application.
+SkyCast is a simple weather application built with Flutter and BLoC (Business Logic Component) state management.
+It fetches real-time weather data such as temperature, pressure, humidity, and more using the OpenWeatherMap API
 
-A few resources to get you started if this is your first Flutter project:
+The project mainly focuses on learning and applying the BLoC Pattern to manage UI states cleanly and efficiently.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🌍 Select a city from a dropdown list
+
+☁️ Fetch live weather details (temperature, humidity, pressure, etc.)
+
+⚡ Managed with Bloc Events & Bloc States
+
+📱 Clean and responsive Flutter UI
